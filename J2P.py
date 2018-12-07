@@ -3,11 +3,11 @@ from json import *
 import re
 from urllib.request import urlopen 
 
-with urlopen("http://www.macs.hw.ac.uk/~hwloidl/Courses/F21SC/issuu_sample.json") as response:
-    src = response.read().decode("utf-8")
+#with urlopen("http://www.macs.hw.ac.uk/~hwloidl/Courses/F21SC/issuu_sample.json") as response:
+    #src = response.read().decode("utf-8")
 
-#with urlopen("http://www.macs.hw.ac.uk/~hwloidl/Courses/F21SC/issuu_cw2.json") as response:
-    #src = response.read().decode()
+with urlopen("http://www.macs.hw.ac.uk/~hwloidl/Courses/F21SC/issuu_cw2.json") as response:
+    src = response.read().decode()
 
 NOT_WHITESPACE = re.compile(r'[^\s]')
 
@@ -45,13 +45,19 @@ with open('visitor.json','r') as infile:
     data = json.load(infile)
     print("Data\n" + data)
 
+Data = json.loads(data)
 Vid = []
 Vbrowser = []
 Vcountry = []
 
-for i in D['Visitor']:
+for i in Data['Visitor']:
     Vid.append(i['visitor_uuid'])
     Vbrowser.append(i['visitor_useragent'])
     Vcountry.append(i['visitor_country'])   
     
-print("Visitor ids:" + Vid +"\nVisitor Browser:" + Vbrowser + "\nVisitor Country:" + Vcountry)
+print("Visitor ids:")
+print(Vid)
+print("\nVisitor Browser:")
+print(Vbrowser)
+print("\nVisitor Country:")
+print(Vcountry)

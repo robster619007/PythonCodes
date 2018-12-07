@@ -32,7 +32,7 @@ for obj in decode_stacked(src):
 print("\n\t\t------------JSON Format After Dumps-----------------------------------\n")
 
 
-
+#doc = json.dumps(x, indent = 2)
 D = {'Visitor' : x }
 D = json.dumps(D, indent = 2)
 print(D)
