@@ -34,8 +34,24 @@ print("\n\t\t------------JSON Format After Dumps--------------------------------
 
 
 D = {'Visitor' : x }
-D = json.dumps(D, indent = 2)
+with open("visitor.json","w") as outfile:
+    D = json.dumps(D, indent = 2)
+    json.dump(D, outfile)
 print(D)
-Load_D = json.loads(D)
+
+#Load_D = json.loads(D)
 print("\n\t\t------------JSON Format after Loads-----------------------------------\n")
-print(Load_D)
+with open('visitor.json','r') as infile:
+    data = json.load(infile)
+    print("Data\n" + data)
+
+Vid = []
+Vbrowser = []
+Vcountry = []
+
+for i in D['Visitor']:
+    Vid.append(i['visitor_uuid'])
+    Vbrowser.append(i['visitor_useragent'])
+    Vcountry.append(i['visitor_country'])   
+    
+print("Visitor ids:" + Vid +"\nVisitor Browser:" + Vbrowser + "\nVisitor Country:" + Vcountry)
